@@ -1,27 +1,27 @@
 /* linalg.h */
 
-double *vector(long dim);
+double *vector(int dim);
 
-void print_vector(double *x, long dim);
+void print_vector(double *x, int dim);
 
-double **matrix(long nrows, long ncols);
+double **matrix(int nrows, int ncols);
 
-void print_matrix(double **A, long nrows, long ncols);
+void print_matrix(double **A, int nrows, int ncols);
 
-void free_matrix(double **A, long nrows);
+void free_matrix(double **A, int nrows);
 
-double **symm_matrix(long nrows);
+double **symm_matrix(int nrows);
 
-void print_symm_matrix(double **A, long nrows);
+void print_symm_matrix(double **A, int nrows);
 
-void free_symm_matrix(double **A, long nrows);
+void free_symm_matrix(double **A, int nrows);
 
-double **lt_matrix(long nrows);
+double **lt_matrix(int nrows);
 
-void print_lt_matrix(double **A, long nrows);
+void print_lt_matrix(double **A, int nrows);
 
-void free_lt_matrix(double **L, long nrows);
+void free_lt_matrix(double **L, int nrows);
 
-void cholesky(double **A, double **L, long nrows);
+void cholesky(double **A, double **L, int nrows);
 
-void fwd_subst(double **L, long nrows, double *x, double *b);
+void fwd_subst(double **L, int nrows, double *x, double *b);

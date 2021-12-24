@@ -13,4 +13,4 @@
 
 void error(char *msg);
 
-void print_status(long step, time_t start, long h_burn_in, long h_draws);
+void print_status(int step, time_t start, int h_burn_in, int h_draws);

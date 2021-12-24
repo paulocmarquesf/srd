@@ -36,34 +36,34 @@ double rnormal(double mean, double std) { /* Box-Muller. */
 }
 
 double rgamma(double alpha, double beta) { /* Marsaglia and Tsang. */
- 	long small = FALSE;
-	double d, c, x, v, u;
+    int small = FALSE;
+	   double d, c, x, v, u;
 
     if (alpha <= 0.0 || beta <= 0.0) error("rgamma: parameters must be positive.");
 
     if (alpha < 1.0) { alpha += 1.0; small = TRUE; }
 
-	d = alpha - 1.0 / 3.0; c = 1.0 / sqrt(9.0 * d);
+	   d = alpha - 1.0 / 3.0; c = 1.0 / sqrt(9.0 * d);
 
-	do {
-		do { x = rnormal(0.0, 1.0); v = 1.0 + c * x; } while (v <= 0.0);
+	   do {
+		      do { x = rnormal(0.0, 1.0); v = 1.0 + c * x; } while (v <= 0.0);
 
-	    v = CUBE(v);
-	    u = runiform();
+	       v = CUBE(v);
+	       u = runiform();
     }
     while (u > 1.0 - 0.0331 * SQUARE(SQUARE(x))
-	         &&
-	       log(u) > 0.5 * SQUARE(x) + d * (1.0 - v + log(v)));
+	            &&
+	          log(u) > 0.5 * SQUARE(x) + d * (1.0 - v + log(v)));
 
     if (small) {
-		do { u = runiform(); } while (u == 0.0);
-		return pow(u, 1.0 / (alpha - 1.0)) * (d * v) / beta;
+		      do { u = runiform(); } while (u == 0.0);
+		      return pow(u, 1.0 / (alpha - 1.0)) * (d * v) / beta;
     }
     else return (d * v) / beta;
 }
 
-void rdirichlet(long n, double *a, double *x) {
-    long i;
+void rdirichlet(int n, double *a, double *x) {
+    int i;
     double sum = 0.0;
     double *g = vector(n);
     for (i = 0; i < n; i++) { g[i] = rgamma(a[i], 1.0); sum += g[i]; }
@@ -71,24 +71,24 @@ void rdirichlet(long n, double *a, double *x) {
     free(g);
 }
 
-void rriemann(double *cur, double *can, long n, double a0, double delta) {
-	long i;
-	double *a = vector(n);
-	for (i = 0; i < n; i++) a[i] = cur[i] * a0 * delta;
-	rdirichlet(n, a, can);
-	for (i = 0; i < n; i++) can[i] /= delta;
-	free(a);
+void rriemann(double *cur, double *can, int n, double a0, double delta) {
+	   int i;
+	   double *a = vector(n);
+	   for (i = 0; i < n; i++) a[i] = cur[i] * a0 * delta;
+	   rdirichlet(n, a, can);
+	   for (i = 0; i < n; i++) can[i] /= delta;
+	   free(a);
 }
 
-void rrw(double *cur, double *can, long n, double eps, double delta) {
-	long i;
-	double tmp, sum = 0.0;
-	for (i = 0; i < n; i++) { tmp = cur[i] * exp(rnormal(0, eps) + 0.01); can[i] = tmp; sum += tmp * delta; }
-	for (i = 0; i < n; i++) can[i] = can[i] / sum;
+void rrw(double *cur, double *can, int n, double eps, double delta) {
+	   int i;
+	   double tmp, sum = 0.0;
+	   for (i = 0; i < n; i++) { tmp = cur[i] * exp(rnormal(0, eps) + 0.01); can[i] = tmp; sum += tmp * delta; }
+	   for (i = 0; i < n; i++) can[i] = can[i] / sum;
 }
 
 double lgamma(double x) { /* NR in C. */
-    long i;
+    int i;
     double u, v, tmp, ser;
 
     static const double cof[14]= {

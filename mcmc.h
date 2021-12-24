@@ -32,18 +32,18 @@ void read_data(double *x);
 
 void clear_results();
 
-void save_results(double *h_est, long k, double eps);
+void save_results(double *h_est, int k, double eps);
 
-long cmpDoubles(const void *table_entry_ptr1, const void *table_entry_ptr2);
+int cmpDoubles(const void *table_entry_ptr1, const void *table_entry_ptr2);
 
-double credible_set(double *h_est, long k, double **indep, long num_hops);
+double credible_set(double *h_est, int k, double **indep, int num_hops);
 
-void save_chain(double *chain, long size);
+void save_chain(double *chain, int size);
 
-void metropolis_hastings(double theta, double *h_est, double *ptr_eps, double *t, long k, double *c);
+void metropolis_hastings(double theta, double *h_est, double *ptr_eps, double *t, int k, double *c);
 
-double log_ratio(double *h_cur, double *h_can, double *ms, double **L, long k);
+double log_ratio(double *h_cur, double *h_can, double *ms, double **L, int k);
 
-double Q(double *h, double *ms, double **L, long k);
+double Q(double *h, double *ms, double **L, int k);
 
-double log_riemann(double *x, double *y, long k);
+double log_riemann(double *x, double *y, int k);

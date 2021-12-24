@@ -9,8 +9,7 @@
 #include "lib/prob.h"
 #include "mcmc.h"
 
-int main()
-{
+int main() {
     int i, j;
     double x[N], eps, theta;
 
@@ -29,8 +28,7 @@ int main()
 
     clear_results();
 
-    for (i = 1; i <= THETA_DRAWS; i++)
-    {
+    for (i = 1; i <= THETA_DRAWS; i++) {
         theta = rgamma(ALPHA, BETA) + THETA_C;
         printf("theta = %f\n", theta);
 

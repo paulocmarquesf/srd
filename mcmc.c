@@ -17,7 +17,7 @@ int main() {
 
     time_t start = time(NULL);
 
-    int k = (long) ceil((T_MAX - T_MIN) / DELTA);
+    int k = (int) ceil((T_MAX - T_MIN) / DELTA);
     double *t = vector(k + 1);
     for (i = 0; i <= k; i++) t[i] = T_MIN + i * DELTA;
 
@@ -124,9 +124,9 @@ void metropolis_hastings(double theta, double *h_est, double *ptr_eps, double *t
     double **L = lt_matrix(k);
 
     double *chain = vector(H_BURN_IN + H_DRAWS);
-    int idx_mon = (long) floor(k / 2);
+    int idx_mon = (int) floor(k / 2);
 
-    int num_hops = (long) floor(H_DRAWS / H_HOP);
+    int num_hops = (int) floor(H_DRAWS / H_HOP);
     double **indep = matrix(num_hops, k);
     int hop_idx = 0;
 

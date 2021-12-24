@@ -1,3 +1,3 @@
 # Simple random densities
 
-> DOI: 10.4236/ojs.2014.45037
+> http://dx.doi.org/10.4236/ojs.2014.45037

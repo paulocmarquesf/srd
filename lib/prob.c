@@ -90,7 +90,7 @@ double lgamma(double x) { /* NR in C. */
     int i;
     double u, v, tmp, ser;
 
-    static const double cof[14]= {
+    static const double cof[14] = {
           57.1562356658629235      , - 59.5979603554754912      ,
           14.1360979747417471      , -  0.491913816097620199    ,
            0.339946499848118887e-4 ,    0.465236289270485756e-4 ,

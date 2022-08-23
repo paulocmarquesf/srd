@@ -33,11 +33,9 @@ int main() {
         printf("theta = %f\n", theta);
 
         double *h_est = vector(k);
-
         metropolis_hastings(theta, h_est, &eps, t, k, c);
 
         save_results(h_est, k, eps);
-
         free(h_est);
     }
 

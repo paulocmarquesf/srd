@@ -84,7 +84,6 @@ void print_vector(double *x, int dim) {
 void cholesky(double **A, double **L, int nrows) { /* A = L L' */
     int i, j, k;
     double p;
-
     for (i = 0; i < nrows; i++) {
         for (j = 0; j <= i; j++) {
             p = A[i][j];
@@ -100,7 +99,6 @@ void cholesky(double **A, double **L, int nrows) { /* A = L L' */
 
 void fwd_subst(double **L, int nrows, double *x, double *b) { /* L x = b */
     int i, j;
-
     for (i = 0; i < nrows; i++) {
         x[i] = b[i];
         for (j = 0; j <= i - 1; j++) x[i] -= L[i][j] * x[j];

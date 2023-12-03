@@ -8,7 +8,7 @@
 
 double runiform() { return (double) rand() / RAND_MAX; }
 
-double rnormal(double mean, double std) { /* Box-Muller algo. */
+double rnormal(double mean, double std) { /* Box-Muller. */
     static double cached = 0.0;
     double x, y, r, res;
 
